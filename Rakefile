@@ -12,11 +12,11 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "lansing-client"
-  gem.homepage = "http://github.com/danryan/lansing-client"
+  gem.name = "monitaur"
+  gem.homepage = "http://github.com/danryan/monitaur-client"
   gem.license = "MIT"
-  gem.summary = %Q{Client for Lansing monitoring service}
-  gem.description = %Q{The client to communicate with the Lansing monitoring service}
+  gem.summary = %Q{Client for Monitaur monitoring service}
+  gem.description = %Q{The client to communicate with the Monitaur monitoring service}
   gem.email = "hi@iamdanryan.com"
   gem.authors = ["Dan Ryan"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
@@ -41,3 +41,8 @@ task :default => :spec
 
 require 'yard'
 YARD::Rake::YardocTask.new
+
+desc "Run watchr"
+task :watchr do
+  sh %{bundle exec watchr .watchr}
+end
