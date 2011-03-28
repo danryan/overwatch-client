@@ -1,13 +1,14 @@
-GIT
-  remote: git://github.com/danryan/fakefs.git
-  revision: 95f4ef407909641218594c51002524a5cc72ab8b
-  specs:
-    fakefs (0.3.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.4)
+    chalofa_ruby-progressbar (0.0.9.1)
+    crack (0.1.8)
     diff-lcs (1.1.2)
+    fuubar (0.0.4)
+      chalofa_ruby-progressbar (~> 0.0.9)
+      rspec (~> 2.0)
+      rspec-instafail (~> 0.1.4)
     git (1.2.5)
     jeweler (1.5.2)
       bundler (~> 1.0.0)
@@ -26,9 +27,13 @@ GEM
     rspec-core (2.5.1)
     rspec-expectations (2.5.0)
       diff-lcs (~> 1.1.2)
+    rspec-instafail (0.1.7)
     rspec-mocks (2.5.0)
     spork (0.9.0.rc4)
     watchr (0.7)
+    webmock (1.6.2)
+      addressable (>= 2.2.2)
+      crack (>= 0.1.7)
     yard (0.6.4)
 
 PLATFORMS
@@ -36,12 +41,13 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.0.0)
-  fakefs!
+  fuubar
   jeweler (~> 1.5.2)
   json
   rcov
   rest-client
   rspec (~> 2.5.0)
-  spork (~> 0.9.0.rc4)
+  spork (~> 0.9.0.rc)
   watchr
+  webmock
   yard (~> 0.6.0)

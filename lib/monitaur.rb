@@ -10,15 +10,13 @@ module Monitaur
   VERSION = IO.read(File.join(File.dirname(File.expand_path(__FILE__)), "../VERSION"))
   
   class << self    
-    attr_writer :log_file_path, :env
-    attr_accessor :agent_key
+    attr_accessor :client_key, :log_file_path, :config_dir, :config_file_path, :env
     
-    def run(agent_key)
-      @agent_key = agent_key
-      if first_run?
-        create_log_file
-        create_cache_directory
-      end
+    def install
+      create_log_file
+      create_cache_directory
+      create_config_directory
+      generate_client_config unless File.exist?(config_file_path)
     end
     
     def default_env
@@ -37,19 +35,20 @@ module Monitaur
       @log ||= Logger.new(log_file_path)
     end
     
-    def default_log_file_path
-      "/var/log/monitaur.log"
-    end
-    
     def log_file_path
-      @log_file_path ||= default_log_file_path
+      @log_file_path ||= "/var/log/monitaur.log"
     end
     
-    def first_run?
-      if File.exist?("/var/log/monitaur.log") && File.exist?("/var/cache/monitaur/")
-        return false
-      end
-      return true
+    def config_dir
+      @config_dir ||= "/etc/monitaur"
+    end
+    
+    def cache_dir
+      @cache_dir ||= "/var/cache/monitaur"
+    end
+    
+    def config_file_path
+      @config_file_path ||= File.join(config_dir, "client.rb")
     end
     
     def create_log_file
@@ -58,7 +57,22 @@ module Monitaur
     end
     
     def create_cache_directory
-      FileUtils.mkdir_p("/var/cache/monitaur")
+      FileUtils.mkdir_p(cache_dir)
+    end
+    
+    def create_config_directory
+      FileUtils.mkdir_p(config_dir)
+    end
+    
+    def generate_client_config
+      File.open(config_file_path, "w") do |file|
+        file.puts(%q{server_url "http://api.monitaurapp.com"})
+        file.puts(%q{client_key "CHANGEME"})
+      end
+    end
+    
+    def raw_config
+      @raw_config ||= IO.read(config_file_path)
     end
   end
 end

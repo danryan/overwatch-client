@@ -1,32 +1,14 @@
 module Monitaur
   class Client
-    attr_reader :logger, :agent_key
+    attr_reader :logger, :client_key
+    attr_accessor :server_url, :config, :raw_config
     
-    def initialize(agent_key)
-      @agent_key = agent_key
+    def initialize
+      load_client_config
     end
-    
-    def run
-      confirm_or_create_files
-      activate_logger
-    end
-    
-    private
 
-    def confirm_or_create_files
-      if Monitaur.env == "test"
-        files = [ "/tmp/var/log/monitaur.log" ]
-        dirs = [ "/tmp/var/log", "/tmp/var/cache/monitaur/plugins"]
-        dirs.each { |dir| FileUtils.mkdir_p(dir) unless File.exist?(dir) }
-        files.each { |file| FileUtils.touch(file) unless File.exist?(file) }
-      else
-        files = [ "/var/log/monitaur.log" ]
-        dirs = [ "/var/log", "/var/cache/monitaur/plugins"]
-        dirs.each { |dir| FileUtils.mkdir_p(dir) unless File.exist?(dir) }
-        files.each { |file| FileUtils.touch(file) unless File.exist?(file) }
-      end
+    def load_client_config
+      raw_config = IO.read(Monitaur.config_file_path)
     end
-    
-
   end
 end

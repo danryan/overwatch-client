@@ -23,22 +23,15 @@ This creates the executable `monitaur`. On the first run, `monitaur` checks for 
     
 ## Plugins
 
-I'm still thinking about the best way to handle plugins. I see two approaches:
-
-* Have default plugins reside on the server; custom plugins will be searched for in /etc/monitaur/plugins
-* Have all plugins reside server-side; all plugins will be cached inside /var/cache/monitaur/plugins
-
+Plugins are stored server-side. Clients first connect to the server to retrieve a manifest of plugins it should have. This manifest includes a list of plugins and their checksums. If a plugin's checksum hasn't changed, no action is taken. If a plugin's checksum has changed, the client downloads and caches the new plugin.
 
 ## Client run
 
-The proposed workflow of a client run:
-
-1) The client is execute via a cron:
-
-    * * * * * monitaur <agent key>
-2) the client searches the plugin 
-
-
+* Client checks with the server to see if it has new plugins
+* Client downloads new plugin data if necessary
+* Client loads all plugins
+* Client processes each plugin
+* Client returns results of plugin runs to server
 
 ## Data example
 
