@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/danryan/fakefs.git
+  revision: 95f4ef407909641218594c51002524a5cc72ab8b
+  specs:
+    fakefs (0.3.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -17,7 +23,6 @@ GEM
     json (1.5.1)
     mime-types (1.16)
     rake (0.8.7)
-    rcov (0.9.9)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.5.0)
@@ -41,10 +46,10 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.0.0)
+  fakefs!
   fuubar
   jeweler (~> 1.5.2)
   json
-  rcov
   rest-client
   rspec (~> 2.5.0)
   spork (~> 0.9.0.rc)
