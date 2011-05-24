@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'rubygems'
+
+$LOAD_PATH << File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'overwatch'
+require 'overwatch/client'
+
+raise "You must supply an agent key as the first argument" unless ARGV[0]
+api_key = ARGV[0]
+begin
+  Overwatch.run api_key
+rescue => e
+  puts e
+end
