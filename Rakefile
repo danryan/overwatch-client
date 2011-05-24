@@ -12,14 +12,14 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "monitaur"
-  gem.homepage = "http://github.com/danryan/monitaur-client"
+  gem.name = "overwatch"
+  gem.homepage = "http://github.com/danryan/overwatch-client"
   gem.license = "MIT"
-  gem.summary = %Q{Client for Monitaur monitoring service}
-  gem.description = %Q{The client to communicate with the Monitaur monitoring service}
+  gem.summary = %Q{Client for Overwatch monitoring service}
+  gem.description = %Q{The client to communicate with the Overwatch monitoring service}
   gem.email = "hi@iamdanryan.com"
   gem.authors = ["Dan Ryan"]
-  gem.executables = ["monitaur"]
+  gem.executables = ["overwatch"]
   
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)

@@ -25,13 +25,13 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  require 'monitaur'
+  require 'overwatch'
   
   RSpec.configure do |config|
     config.before do
       ENV['HOME'] = "/home/user"
       
-      Monitaur.env = "test"
+      Overwatch.env = "test"
     end
   end
 end

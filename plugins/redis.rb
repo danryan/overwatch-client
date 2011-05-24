@@ -3,6 +3,7 @@ redis Mash.new
 
 begin
   require 'redis'
+  require 'system_timer'
 rescue LoadError => e
   Ohai::Log.warn e.message
 end

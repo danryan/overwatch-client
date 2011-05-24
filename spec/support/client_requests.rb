@@ -40,7 +40,7 @@ end
 
 def stub_foo_plugin
   %|
-  class FooPlugin < Monitaur::Plugin
+  class FooPlugin < Overwatch::Plugin
     name "foo_plugin"
     desc "A test plugin to determine whether plugin sync works"
 
@@ -53,7 +53,7 @@ end
 
 def stub_bar_plugin
   %|
-  class BarPlugin < Monitaur::Plugin
+  class BarPlugin < Overwatch::Plugin
     name "bar_plugin"
     desc "A test plugin to determine whether plugin sync works"
 

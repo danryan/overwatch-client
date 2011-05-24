@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem 'rest-client'
 gem 'json'
 gem 'ohai', '~> 0.6.2'
+gem 'SystemTimer', :require => 'system_timer'
 
 group :development do
   gem "rspec", "~> 2.5.0"

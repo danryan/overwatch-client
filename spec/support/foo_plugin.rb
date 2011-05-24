@@ -1,4 +1,4 @@
-# class FooPlugin  # < Monitaur::Plugin
+# class FooPlugin  # < Overwatch::Plugin
 #   name = "foo_plugin"
 #   desc = "A test plugin to determine whether plugin sync works"
 #   

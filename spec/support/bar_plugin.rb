@@ -1,4 +1,4 @@
-# class BarPlugin # < Monitaur::Plugin
+# class BarPlugin # < Overwatch::Plugin
 #   name = "bar_plugin"
 #   desc = "A test plugin to determine whether plugin sync works"
 #   

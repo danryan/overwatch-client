@@ -1,6 +1,6 @@
-# monitaur-client
+# overwatch-client
 
-Client for the Monitaur monitoring service
+Client for the Overwatch monitoring service
 
 ## TODO
 
@@ -13,13 +13,13 @@ Braindump of how I plan to get data from the node to the server:
 
 The client is installed via rubygems
 
-    gem install monitaur
+    gem install overwatch
     
-This creates the executable `monitaur`. On the first run, `monitaur` checks for the existence of:
+This creates the executable `overwatch`. On the first run, `overwatch` checks for the existence of:
 
-    /var/log/monitaur.log
-    /etc/monitaur
-    /var/cache/monitaur/plugins
+    /var/log/overwatch.log
+    /etc/overwatch
+    /var/cache/overwatch/plugins
     
 ## Plugins
 
@@ -58,7 +58,7 @@ Every plugin spits out an array of hashes that look like this:
       }
     ]
 
-For each item in the array, a call is made to the Monitaur API that looks like this:
+For each item in the array, a call is made to the Overwatch API that looks like this:
 
     {
       :data_point => {
