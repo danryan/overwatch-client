@@ -1,13 +1,9 @@
 require 'logger'
 require 'fileutils'
 require 'rest-client'
+require 'yajl'
 
-require 'overwatch/command'
-require 'overwatch/plugin'
-require 'overwatch/server'
 require 'overwatch/client'
-# require 'overwatch/config'
-require 'overwatch/mixin'
 
 module Overwatch
   VERSION = IO.read(File.join(File.dirname(File.expand_path(__FILE__)), "../VERSION"))

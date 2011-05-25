@@ -25,7 +25,7 @@ module Overwatch
     def post_data
       res = RestClient.post(
         "http://overwat.ch:9292/nodes/#{api_key}",
-        data.to_json,
+        Yajl.dump(data),
         { 'Content-Type' => 'application/json' }
       )
       puts res.body
