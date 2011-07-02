@@ -5,14 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{overwatch}
-  s.version = "0.1.0"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Dan Ryan"]
-  s.date = %q{2011-04-04}
+  s.authors = [%q{Dan Ryan}]
+  s.date = %q{2011-07-02}
   s.description = %q{The client to communicate with the Overwatch monitoring service}
   s.email = %q{hi@iamdanryan.com}
-  s.executables = ["overwatch"]
+  s.executables = [%q{overwatch}]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md"
@@ -27,25 +27,37 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "bin/overwatch",
     "lib/overwatch.rb",
     "lib/overwatch/client.rb",
-    "lib/overwatch/command.rb",
-    "lib/overwatch/plugin.rb",
-    "lib/overwatch/server.rb",
-    "spec/overwatch/client_spec.rb",
-    "spec/overwatch_spec.rb",
-    "spec/spec_helper.rb"
+    "overwatch.gemspec",
+    "plugins/load_average.rb",
+    "plugins/mongodb.rb",
+    "plugins/mysql.rb",
+    "plugins/nginx.rb",
+    "plugins/redis.rb",
+    "spec/monitaur/client_spec.rb",
+    "spec/monitaur_spec.rb",
+    "spec/spec_helper.rb",
+    "spec/support/bar_plugin.rb",
+    "spec/support/client_requests.rb",
+    "spec/support/foo_plugin.rb",
+    "spec/support/test.rb",
+    "test.json"
   ]
   s.homepage = %q{http://github.com/danryan/overwatch-client}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
   s.summary = %q{Client for Overwatch monitoring service}
   s.test_files = [
-    "spec/overwatch/client_spec.rb",
-    "spec/overwatch_spec.rb",
+    "spec/monitaur/client_spec.rb",
+    "spec/monitaur_spec.rb",
     "spec/spec_helper.rb",
-    "spec/support/client_requests.rb"
+    "spec/support/bar_plugin.rb",
+    "spec/support/client_requests.rb",
+    "spec/support/foo_plugin.rb",
+    "spec/support/test.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -54,11 +66,11 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rest-client>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<ohai>, ["~> 0.6.2"])
       s.add_development_dependency(%q<rspec>, ["~> 2.5.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<watchr>, [">= 0"])
       s.add_development_dependency(%q<spork>, ["~> 0.9.0.rc"])
       s.add_development_dependency(%q<fuubar>, [">= 0"])
@@ -67,11 +79,11 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rest-client>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<ohai>, ["~> 0.6.2"])
       s.add_dependency(%q<rspec>, ["~> 2.5.0"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
-      s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<watchr>, [">= 0"])
       s.add_dependency(%q<spork>, ["~> 0.9.0.rc"])
       s.add_dependency(%q<fuubar>, [">= 0"])
@@ -81,11 +93,11 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rest-client>, [">= 0"])
     s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<ohai>, ["~> 0.6.2"])
     s.add_dependency(%q<rspec>, ["~> 2.5.0"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
-    s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<watchr>, [">= 0"])
     s.add_dependency(%q<spork>, ["~> 0.9.0.rc"])
     s.add_dependency(%q<fuubar>, [">= 0"])

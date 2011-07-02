@@ -10,6 +10,7 @@ require 'overwatch/client'
 
 raise "You must supply an agent key as the first argument" unless ARGV[0]
 api_key = ARGV[0]
+
 begin
   Overwatch.run api_key
 rescue => e
