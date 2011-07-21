@@ -1,0 +1,6 @@
+collection:
+  host: localhost
+events:
+  host: localhost
+checks:
+  host: localhost
