@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rest-client', '>= 1.6.3'
   s.add_dependency 'clamp', '>= 0.2.2'
   s.add_dependency 'formatador', '>= 0.2.0'
-  s.add_dependency 'hirb', '0.4.5'
+  s.add_dependency 'hirb', '>= 0.4.5'
   
   s.add_development_dependency 'rspec', '>= 2.6.0'
   s.add_development_dependency 'spork', '>= 0.9.0.rc8'
