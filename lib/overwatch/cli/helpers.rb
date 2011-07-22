@@ -1,3 +1,9 @@
+require 'yajl'
+require 'rest-client'
+require 'clamp'
+require 'hirb'
+require 'formatador'
+
 module Overwatch
   module CLI
     module Helpers
@@ -52,10 +58,13 @@ module Overwatch
         when 'text'
           puts Hirb::Helpers::TextTable.render(data, options)
         when 'json'
-          pp JSON.generate(data)
+          puts JSON.generate(data)
+        when 'none'
+          return
         else
           puts Hirb::Helpers::Table.render(data, options)
         end
+        
       end
     end
   end
