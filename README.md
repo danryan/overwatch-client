@@ -5,7 +5,7 @@
   
 # Usage
 
-    I'm going to assume you've got overwatch-collection running somewhere on your local machine for the purpose of this documention.
+I'm going to assume you've got overwatch-collection running somewhere on your local machine for the purpose of this documention.
 
 ## Help!
 
@@ -20,13 +20,13 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
 
 #### Parameters
 
-* SUBCOMMAND                    subcommand name
-* [ARGS] ...                    subcommand arguments
+    SUBCOMMAND                    subcommand name
+    [ARGS] ...                    subcommand arguments
 
 #### Subcommands
 
-* resource                      Resources
-* snapshot                      Snapshots
+    resource                      Resources
+    snapshot                      Snapshots
 
 ## Subcommands
 
@@ -38,23 +38,23 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
 
 #### Parameters
         
-* SUBCOMMAND                    subcommand name
-* [ARGS] ...                    subcommand arguments
+    SUBCOMMAND                    subcommand name
+    [ARGS] ...                    subcommand arguments
 
 #### Subcommands
 
-* list                          list all resources
-* show                          show a specific resource
-* create                        create a new resource
-* update                        update an existing resource
-* delete                        delete an existing resource
-* regenerate                    regenerate a resource's API key
+    list                          list all resources
+    show                          show a specific resource
+    create                        create a new resource
+    update                        update an existing resource
+    delete                        delete an existing resource
+    regenerate                    regenerate a resource's API key
 
 #### Options
 
-* -h, --host HOST               overwatch-collection server (default: "localhost")
-* -p, --port PORT               overwatch-collection port (default: "9001")
-* -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
+    -h, --host HOST               overwatch-collection server (default: "localhost")
+    -p, --port PORT               overwatch-collection port (default: "9001")
+    -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
 ### overwatch resource list
 
@@ -64,9 +64,9 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
 
 #### Options
 
-* -h, --host HOST               overwatch-collection server (default: "localhost")
-* -p, --port PORT               overwatch-collection port (default: "9001")
-* -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
+    -h, --host HOST               overwatch-collection server (default: "localhost")
+    -p, --port PORT               overwatch-collection port (default: "9001")
+    -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
 #### Examples:
 
@@ -98,14 +98,14 @@ Plaintext format for easy piping/grepping/awking:
 
 #### Parameters
 
-* NAME                          resource name
+    NAME_OR_ID                    resource name or id
 
 #### Options
 
-* -a, --attributes              list all resource attributes
-* -h, --host HOST               overwatch-collection server (default: "localhost")
-* -p, --port PORT               overwatch-collection port (default: "9001")
-* -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
+    -a, --attributes              list all resource attributes
+    -h, --host HOST               overwatch-collection server (default: "localhost")
+    -p, --port PORT               overwatch-collection port (default: "9001")
+    -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
 #### Example
 
