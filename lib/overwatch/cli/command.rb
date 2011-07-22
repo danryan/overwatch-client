@@ -1,56 +1,71 @@
-require 'overwatch/cli/command'
+require 'rest-client'
+require 'clamp'
+require 'formatador'
+require 'yajl/json_gem'
+require 'overwatch/cli/helpers'
+require 'hirb'
 
 module Overwatch
   module CLI
-    module Command
+    class Command < Clamp::Command
+      include Helpers
       
-      def self.load
-        Dir[File.join(File.dirname(__FILE__), "command", "*.rb")].each do |file|
-          require file
+      option ["-v", "--verbose"], :flag, "be verbose"
+      option "--version", :flag, "show version" do
+        puts "Overwatch v#{Overwatch::CLI::VERSION} (Codename: Snickelfritz)"
+        exit(0)
+      end
+      subcommand "resource", "Resources" do
+        option ["-h", "--host"], "HOST", "overwatch-collection server", :default => "localhost"
+        option ["-p", "--port"], "PORT", "overwatch-collection port", :default => "9001"
+        option ["-f", "--format"], "[FORMAT]", "format (choices: pretty, json, text)", :default => "pretty"
+        
+        subcommand "list", "list all resources" do
+          def execute
+            options = { :fields => ['id','name', 'api_key'], :format => format }
+            
+            get("http://#{host}:#{port}/resources", options)
+          end
         end
-        # Overwatch::CLI::Plugin.load!
-      end
+        
+        subcommand "show", "show a specific resource" do
+          parameter "NAME", "resource name"
+          
+          option ['-a', '--attributes'], :flag, "list all resource attributes"
+          
+          def execute
+            options = { :fields => ['id','name', 'api_key'], :format => format }
+            get("http://#{host}:#{port}/resources/#{name}", options)
+          end
+        end
+          
+        subcommand "create", "create a new resource" do
+          parameter "NAME", "resource name"
+          
+          def execute
+            options = { :fields => ['id','name', 'api_key'], :format => format }
+            post("http://#{host}:#{port}/resources", JSON.generate({:name => name}), options)            
+          end
 
-      def self.commands
-        @@commands ||= {}
-      end
-
-      def self.command_aliases
-        @@command_aliases ||= {}
-      end
-
-      def self.namespaces
-        @@namespaces ||= {}
-      end
-
-      def self.register_command(command)
-        commands[command[:command]] = command
-      end
-
-      def self.register_namespace(namespace)
-        namespaces[namespace[:name]] = namespace
-      end
-
-      def self.current_command
-        @current_command
-      end
-
-      def self.current_args
-        @current_args
-      end
-
-      def self.current_options
-        @current_options
-      end
-
-      def self.global_options
-        @global_options ||= []
-      end
-
-      def self.global_option(name, *args)
-        global_options << { :name => name, :args => args }
+        end
+        subcommand "update", "update an existing resource"
+        subcommand "delete", "delete an existing resource" do
+          parameter "NAME", "resource name"
+          
+          def execute
+            # resource = delete("http://#{host}:#{port}/resources/#{name}")
+            display_line "[yellow]Resource deleted![/]"
+          end
+        end
+        subcommand "regenerate", "regenerate a resource's API key"
       end
       
+      subcommand "snapshot", "Snapshots" do
+        subcommand "show", "show an existing snapshot"
+        subcommand "create", "create a new snapshot"
+        subcommand "delete", "delete an existing snapshot"
+      end
     end
+    
   end
 end
