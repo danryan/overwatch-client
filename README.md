@@ -2,11 +2,6 @@
 
   gem install overwatch
 
-  
-# Usage
-
-I'm going to assume you've got overwatch-collection running somewhere on your local machine for the purpose of this documention.
-
 # Configuration
 
 Configuration of `overwatch` can be done in one of two ways: command-line options, and a config file in the YAML format. If no config options are specified, the `overwatch` executable will look for a file called `.overwatchrc` in the `HOME_DIR` of the user that is executing the command. Parameters that can be configured in the config file are:
@@ -15,11 +10,17 @@ Configuration of `overwatch` can be done in one of two ways: command-line option
 * Port
 * API key
 
-## Configuration File Format
+Even if an option is specified in the config file, it can be overridden with a command-line argument. Options ommitted will use the default values.
+
+## Example configuration file
 
     server: overwatch.example.com
     port: 9090
     key: asdf1234asdf1234asdf1234asdf234
+      
+# Usage
+
+I'm going to assume you've got overwatch-collection running somewhere on your local machine for the purpose of this documention.
     
 ## Help!
 
@@ -27,7 +28,7 @@ All commands provide a contextual help menu. Apped `--selp` to the end of any co
 
 ## Main command
 
-When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is installed somewhere in your $PATH (the exact location is entirely dependent upon your Ruby/Gems setup).
+When you install `overwatch` via RubyGems, an executable, `overwatch`, is installed somewhere in your $PATH (the exact location is entirely dependent upon your Ruby/Gems setup).
 
 #### Usage:
     overwatch [OPTIONS] SUBCOMMAND [ARGS] ...
