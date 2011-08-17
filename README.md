@@ -24,7 +24,7 @@ I'm going to assume you've got overwatch-collection running somewhere on your lo
     
 ## Help!
 
-All commands provide a contextual help menu. Apped `--selp` to the end of any command or subcommand to bring up its specific help menu.
+All commands provide a contextual help menu. Append `--help` to the end of any command or subcommand to bring up its specific help menu.
 
 ## Main command
 
@@ -165,7 +165,6 @@ Find a resource by _id_ and display it in plain text:
 
 ## TODO
 
-* dotfile for configuration of defaults
 * expand command set as other overwatch pieces are implemented
 * user authentication/authorization (done in the other apps, but we'll need support here)
 
