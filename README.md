@@ -9,7 +9,7 @@ I'm going to assume you've got overwatch-collection running somewhere on your lo
 
 ## Help!
 
-All commands provide a contextual help menu. Apped `--help` to the end of any command or subcommand to bring up its specific help menu.
+All commands provide a contextual help menu. Apped `--selp` to the end of any command or subcommand to bring up its specific help menu.
 
 ## Main command
 
@@ -25,10 +25,31 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
 
 #### Subcommands
 
+    run                           Compile and send a new snapshot to the server
     resource                      Resources
     snapshot                      Snapshots
+    
 
 ## Subcommands
+
+### overwatch run
+
+#### Usage
+
+    overwatch run [OPTIONS] [ARGS] ...
+    
+#### Parameters
+
+    SUBCOMMAND                    subcommand name
+    [ARGS] ...                    subcommand arguments
+
+#### Options
+
+    -k, --key KEY          API key (default: nil)
+    -s, --server SERVER    collection server (default: "localhost")
+    -p, --port PORT        collection port (default: "9001")
+    -f, --format [FORMAT]  format (choices: pretty, json, text) (default: "pretty")
+
 
 ### overwatch resource
 
@@ -52,7 +73,7 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
 
 #### Options
 
-    -h, --host HOST               overwatch-collection server (default: "localhost")
+    -s, --server SERVER               overwatch-collection server (default: "localhost")
     -p, --port PORT               overwatch-collection port (default: "9001")
     -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
@@ -64,7 +85,7 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
 
 #### Options
 
-    -h, --host HOST               overwatch-collection server (default: "localhost")
+    -s, --server SERVER               overwatch-collection server (default: "localhost")
     -p, --port PORT               overwatch-collection port (default: "9001")
     -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
@@ -103,7 +124,7 @@ Plaintext format for easy piping/grepping/awking:
 #### Options
 
     -a, --attributes              list all resource attributes
-    -h, --host HOST               overwatch-collection server (default: "localhost")
+    -s, --server SERVER               overwatch-collection server (default: "localhost")
     -p, --port PORT               overwatch-collection port (default: "9001")
     -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
