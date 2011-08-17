@@ -2,7 +2,7 @@
 
 $: << File.expand_path(File.dirname(__FILE__) + "/../lib")
 
-require 'overwatch/cli'
+require 'overwatch'
 require 'clamp'
 
-Overwatch::CLI::Command.run
+Overwatch::Command.run
