@@ -1,6 +1,6 @@
 # Installation
 
-  gem install overwatch-cli
+  gem install overwatch
 
   
 # Usage

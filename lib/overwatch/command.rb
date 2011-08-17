@@ -15,13 +15,39 @@ module Overwatch
       puts "Overwatch v#{Overwatch::VERSION} (Codename: Snickelfritz)"
       exit(0)
     end
+    
+    option ['-c', '--config'], "CONFIG", "config file"
+    option ['--dry-run'], :flag, "Dry run"
+    option ["-s", "--server"], "SERVER", "collection server"
+    option ["-p", "--port"], "PORT", "collection port"
+    option ["-f", "--format"], "[FORMAT]", "format (choices: pretty, json, text)"
+    option ["-k", "--key"], "KEY", "API key"
 
+    def config=(file)
+      YAML.load_file(File.expand_path(file))
+    end
+    
+    def default_config
+      YAML.load_file(File.expand_path("~/.overwatchrc"))
+    end
+
+    def default_server
+      config['server'] || 'localhost'
+    end
+    
+    def default_port
+      config['port'] || '9001'
+    end
+    
+    def default_key
+      config['key'] || nil
+    end
+    
+    def default_format
+      config['format'] || 'pretty'
+    end
+    
     subcommand "run", "Run the client" do
-      option ["-k", "--key"], "KEY", "API key", :default => nil
-      option ["-s", "--server"], "SERVER", "collection server", :default => "localhost"
-      option ["-p", "--port"], "PORT", "collection port", :default => "9001"
-      option ["-f", "--format"], "[FORMAT]", "format (choices: pretty, json, text)", :default => "pretty"
-
       unless Ohai::Config[:plugin_path].include?(Overwatch.plugin_path)
         Ohai::Config[:plugin_path] << Overwatch.plugin_path
       end
@@ -41,9 +67,6 @@ module Overwatch
     end
 
     subcommand "resource", "Resources" do
-      option ["-s", "--server"], "SERVER", "collection server", :default => "localhost"
-      option ["-p", "--port"], "PORT", "collection port", :default => "9001"
-      option ["-f", "--format"], "[FORMAT]", "format (choices: pretty, json, text)", :default => "pretty"
 
       subcommand "list", "list all resources" do
         def execute
