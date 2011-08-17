@@ -7,6 +7,20 @@
 
 I'm going to assume you've got overwatch-collection running somewhere on your local machine for the purpose of this documention.
 
+# Configuration
+
+Configuration of `overwatch` can be done in one of two ways: command-line options, and a config file in the YAML format. If no config options are specified, the `overwatch` executable will look for a file called `.overwatchrc` in the `HOME_DIR` of the user that is executing the command. Parameters that can be configured in the config file are:
+
+* Server
+* Port
+* API key
+
+## Configuration File Format
+
+    server: overwatch.example.com
+    port: 9090
+    key: asdf1234asdf1234asdf1234asdf234
+    
 ## Help!
 
 All commands provide a contextual help menu. Apped `--selp` to the end of any command or subcommand to bring up its specific help menu.
@@ -30,6 +44,14 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
     snapshot                      Snapshots
     
 
+#### Options
+    -c, --config CONFIG    Overwatch config file
+    -k, --key KEY          API key (default: nil)
+    -s, --server SERVER    collection server (default: "localhost")
+    -p, --port PORT        collection port (default: "9001")
+    -f, --format [FORMAT]  format (choices: pretty, json, text) (default: "pretty")
+
+
 ## Subcommands
 
 ### overwatch run
@@ -42,14 +64,6 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
 
     SUBCOMMAND                    subcommand name
     [ARGS] ...                    subcommand arguments
-
-#### Options
-
-    -k, --key KEY          API key (default: nil)
-    -s, --server SERVER    collection server (default: "localhost")
-    -p, --port PORT        collection port (default: "9001")
-    -f, --format [FORMAT]  format (choices: pretty, json, text) (default: "pretty")
-
 
 ### overwatch resource
 
@@ -71,23 +85,11 @@ When you install `overwatch-cli` via RubyGems, an executable, `overwatch`, is in
     delete                        delete an existing resource
     regenerate                    regenerate a resource's API key
 
-#### Options
-
-    -s, --server SERVER               overwatch-collection server (default: "localhost")
-    -p, --port PORT               overwatch-collection port (default: "9001")
-    -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
-
 ### overwatch resource list
 
 #### Usage
       
     overwatch resource list [OPTIONS]
-
-#### Options
-
-    -s, --server SERVER               overwatch-collection server (default: "localhost")
-    -p, --port PORT               overwatch-collection port (default: "9001")
-    -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
 #### Examples:
 
@@ -124,9 +126,6 @@ Plaintext format for easy piping/grepping/awking:
 #### Options
 
     -a, --attributes              list all resource attributes
-    -s, --server SERVER               overwatch-collection server (default: "localhost")
-    -p, --port PORT               overwatch-collection port (default: "9001")
-    -f, --format [FORMAT]         format (choices: pretty, json, text) (default: "pretty")
 
 #### Example
 
